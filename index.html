@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/assets/css/main.css">
+  <title>Shoplist</title>
+</head>
+
+<body>
+  <header>
+    <h1>Mes courses</h1>
+    <img id="logo" src="./src/assets/img/logo.png" alt="Logo">
+  </header>
+  <main>
+    <p id="alert-user"></p>
+    <section id="section-add-product" class="hidden">
+      <h2>Ajouter un article</h2>
+      <form action="#">
+        <input list="data-products" type="text" id="product-name" placeholder="Nom du produit ex: pain" focus>
+        <button type="submit">Ajouter</button>
+        <datalist id="data-products">
+          <option value="apple">Pommes - Fruits</option>
+        </datalist>
+      </form>
+    </section>
+    <section id="section-shoplist">
+      <h2>Ma liste de course<span></span></h2>
+    </section>
+  </main>
+  <footer>
+    <nav>
+      <ul>
+        <li id="btn-add-product">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="currentColor" d="M11 17h2v-4h4v-2h-4V7h-2v4H7v2h4zm1 5q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
+        </li>
+        <li>
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE -->
+              <path fill="currentColor"
+                d="M2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm4-8h8v-2H6zm0-3h12V9H6zm0-3h12V6H6z">
+              </path>
+            </svg>
+            <span>Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <p>
+      Copyrights 2025 - Acteur de la grande distribution - tous réservés
+    </p>
+  </footer>
+  <script type="module" src="./src/assets/js/main.js"></script>
+</body>
+
+</html>

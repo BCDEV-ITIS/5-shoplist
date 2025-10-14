@@ -1,0 +1,46 @@
+img#logo {
+  width: 32px;
+  height: 32px;
+}
+
+#section-add-product.hidden {
+  display: none;
+}
+
+body>header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+h1 {
+  text-align: center;
+}
+body>footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+footer>nav>ul {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ff4136;
+  align-items: center;
+}
+
+
+footer>nav>ul a {
+  font-weight: 500;
+  color: #f3f3f3;
+  text-decoration: inherit;
+}
+
+footer>nav>ul a span {
+  display: block;
+}
