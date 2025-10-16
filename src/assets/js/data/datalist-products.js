@@ -13,15 +13,15 @@ export const datalistProductItems = [
   },
   {
     label: "Lait",
-    category: "prodtuis laitiers",
+    category: "produits laitiers",
   },
   {
     label: "yaourt",
-    category: "prodtuis laitiers",
+    category: "produits laitiers",
   },
   {
     label: "fromages",
-    category: "prodtuis laitiers",
+    category: "produits laitiers",
   },
   {
     label: "poulet",
