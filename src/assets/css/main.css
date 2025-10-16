@@ -51,6 +51,12 @@ footer small,
   text-align: center;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 section {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
