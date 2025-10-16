@@ -1,54 +1,73 @@
 import { datalistProductItems } from "./data/datalist-products.js";
 /**
- * Get products from Brownser API localStorage
- * @returns null or Array of product with label 
+ * Get products from Brownser API sessionStorage
+ * @returns Array of product with label and checked attributes or empty array
  */
-export function getProductsFromLocalStorage() {
-  const productsFromLS = localStorage.getItem("products");
+function getProductsFromSessionStorage() {
+  const productsFromLS = sessionStorage.getItem("products");
   if (productsFromLS) return JSON.parse(productsFromLS);
-  else return null;
+  else return [];
 }
 
 /**
  * Compute products purchased out of total products
  * @returns void
  */
-export function computePurchased() {
-  const total = getProductsFromLocalStorage().length;
+export function displayTotalPurchased() {
+  const total = getProductsFromSessionStorage().length;
   const purchased = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
   const h2 = document.querySelector("#section-shoplist h2 span");
-  h2.innerHTML = ` : achats ${purchased}/${total}`;
+  h2.innerHTML = ` : ${purchased}/${total}`;
 }
 
 /**
  * Update products purchased out of total products
  * @returns void
  */
-export function updatePurchased() {
+function updateProductStatus() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   if (checkboxes.length) {
     checkboxes.forEach(function (c) {
-      c.addEventListener("change", computePurchased);
+      c.addEventListener("change", function () {
+        let products = getProductsFromSessionStorage();
+        let findProductIndex = products.findIndex(
+          (i) => i.label.toLowerCase() === c.value.toLowerCase()
+        );
+        const current = products[findProductIndex];
+        current.checked = !current.checked;
+        products[findProductIndex] = current;
+        sessionStorage.setItem("products", JSON.stringify(products));
+        displayTotalPurchased();
+      });
     });
   }
 }
 
 /**
- * Display shop list
+ * Display shopping list
  * @returns void
  */
-export function showShopList() {
+export function displayShoppingList() {
   const sectionElt = document.querySelector("#section-shoplist");
-  const items = getProductsFromLocalStorage();
-  if (items) {
+  const items = getProductsFromSessionStorage();
+  if (items.length) {
     const ol = document.createElement("ol");
     const p = sectionElt.querySelector("p");
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const li = document.createElement("li");
-      li.innerHTML = `<input type="checkbox" id="${i}" value="${item.label}"><label for="product-${i}">${item.label}</label>`;
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.id = `product-${i}`;
+      input.value = item.label;
+      if (item.checked) {
+        input.setAttribute("checked", "checked");
+      } else {
+        input.removeAttribute("checked");
+      }
+      li.innerHTML = `${input.outerHTML}<label for="product-${i}">${item.label}</label>`;
       ol.append(li);
     }
     if (p) {
@@ -56,7 +75,7 @@ export function showShopList() {
       p.remove();
     }
     sectionElt.append(ol);
-    computePurchased();
+    updateProductStatus();
   }
 }
 
@@ -71,26 +90,32 @@ export function addProduct() {
       e.preventDefault();
       const alertUser = document.querySelector("#alert-user");
       alertUser.innerHTML = ""; // remove last message
-      const products = getProductsFromLocalStorage();
+      const products = getProductsFromSessionStorage();
       const productName = document.querySelector("#product-name");
-      const newProduct = { label: productName.value.trim(), checked: false };
-      if (products === null) {
-        // first product
-        localStorage.setItem("products", JSON.stringify([newProduct]));
-      } else if (products.some((item) => item.label.toLowerCase() === newProduct.label.toLowerCase())) {
-        // duplicate product
-        alertUser.innerText = `${newProduct.label} est déjà présent dans votre liste`;
-      } else {
-        // new product inside products list
-        products.push(newProduct);
-        localStorage.setItem("products", JSON.stringify(products));
+      if (productName.value === "") {
+        alertUser.innerHTML = "Le nom du produit est obligatoire !";
+        return;
       }
-      productName.value = ""; // remove current value after submitted
+      const newProduct = { label: productName.value.trim(), checked: false };
+      if (
+        products.some(
+          (item) => item.label.toLowerCase() === newProduct.label.toLowerCase()
+        )
+      ) {
+        // Duplicate product
+        alertUser.innerText = `${newProduct.label} est déjà présent dans votre liste en cours !`;
+      } else {
+        // New product inside products list
+        products.push(newProduct);
+        sessionStorage.setItem("products", JSON.stringify(products));
+      }
+      productName.value = ""; // Remove current value after submitted
       const ol = document.querySelector("#section-shoplist ol");
       if (ol) {
-        ol.remove(); // remove last list
+        ol.remove(); // Remove last list
       }
-      showShopList();
+      displayShoppingList();
+      displayTotalPurchased();
     });
   }
 }
@@ -108,7 +133,7 @@ export function toogleForm() {
 }
 
 /**
- * fill datalist to add quickly product 
+ * fill datalist to add quickly product
  * @returns void
  */
 export function fillDataListProducts() {

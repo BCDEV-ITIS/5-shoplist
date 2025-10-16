@@ -2,12 +2,12 @@ import {
   fillDataListProducts,
   addProduct,
   toogleForm,
-  showShopList,
-  updatePurchased
+  displayShoppingList,
+  displayTotalPurchased
 } from './product.js'
 
 fillDataListProducts()
 addProduct()
 toogleForm()
-showShopList()
-updatePurchased()
+displayShoppingList()
+displayTotalPurchased()

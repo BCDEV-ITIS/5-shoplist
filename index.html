@@ -16,7 +16,11 @@
   <main>
     <h1>Mes courses simplifiés</h1>
     <p id="alert-user"></p>
-    <section id="section-add-product" class="hidden">
+    <section id="section-shoplist">
+      <h2>Achats en cours<span></span></h2>
+      <p>Aucun produit</p>
+    </section>
+        <section id="section-add-product" class="hidden">
       <h2>Ajouter un article</h2>
       <form action="#">
         <input list="data-products" type="text" id="product-name" placeholder="Nom du produit ex: pain" focus>
@@ -25,10 +29,6 @@
           <option value="apple">Pommes - Fruits</option>
         </datalist>
       </form>
-    </section>
-    <section id="section-shoplist">
-      <h2>Ma liste de course en cours<span></span></h2>
-      <p>Aucun produit</p>
     </section>
   </main>
   <footer>

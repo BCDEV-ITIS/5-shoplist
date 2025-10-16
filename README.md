@@ -42,3 +42,7 @@ Application is running on the production server at [https://bcdev-itis.github.io
 MVP mock-ups
 
 ![mvp](./mock-up/mvp.png)
+
+## Development board
+
+![board](./mock-up/board.png)
