@@ -1,1 +1,4 @@
 **/*.drawio
+package*.json
+node_modules
+cypress
