@@ -3,6 +3,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 body > header {
@@ -11,6 +12,16 @@ body > header {
 
 main {
   margin-bottom: 3rem;
+  width: 100%;
+}
+
+body>footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 2rem;
+  margin-bottom: .5rem;
 }
 
 img#logo {
@@ -25,18 +36,19 @@ img#logo + span {
   margin: 1rem;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
 h1 {
   font-size: 1.4rem;
+   text-decoration: underline;
 }
 
 h2 {
   font-size: 1.1rem;
+}
+
+h1,
+footer small,
+#btn-add-product {
+  text-align: center;
 }
 
 section {
@@ -49,24 +61,6 @@ section {
   display: none;
 }
 
-h1 {
-  text-decoration: underline;
-}
-
-h1,
-footer small,
-#btn-add-product {
-  text-align: center;
-}
-
-body>footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: 2rem;
-  margin-bottom: .5rem;
-}
 
 #btn-add-product {
   cursor: pointer;
@@ -105,6 +99,11 @@ input[type="checkbox"]+label {
   padding-left: 0.5rem;
 }
 
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #c95137;
+}
+
 li {
   margin-top: .5rem;
   margin-bottom: .5rem;
@@ -113,9 +112,4 @@ li {
 #alert-user {
   color: #b8860b;
   font-weight: 500;
-}
-
-input[type="checkbox"]:checked + label {
-  text-decoration: line-through;
-  color: #c95137;
 }
