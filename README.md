@@ -45,4 +45,4 @@ MVP mock-ups
 
 ## Development board
 
-![board](./mock-up/board.png)
+[You can find the development board on the GitHub Projects tab](https://github.com/orgs/BCDEV-ITIS/projects/3)
