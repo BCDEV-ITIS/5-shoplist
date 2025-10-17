@@ -40,48 +40,48 @@ export const datalistProductItems = [
     category: "viandes, poissons et protéines",
   },
   {
-    label: "pâtes - épicerie sèche",
-    category: "grocery",
+    label: "pâtes",
+    category: "épicerie",
   },
   {
-    label: "riz - épicerie sèche",
-    category: "grocery",
+    label: "riz",
+    category: "épicerie",
   },
   {
     label: "céréales",
-    category: "grocery",
+    category: "épicerie",
   },
   {
     label: "farine",
-    category: "grocery",
+    category: "épicerie",
   },
   {
     label: "sucre",
-    category: "grocery",
+    category: "épicerie",
   },
   {
     label: "huile",
-    category: "grocery",
+    category: "épicerie",
   },
   {
     label: "sauce tomate",
-    category: "grocery",
+    category: "épicerie",
   },
   {
     label: "surgelé",
-    category: "frozen",
+    category: "surgelés",
   },
   {
     label: "compotes",
-    category: "various",
+    category: "divers",
   },
   {
     label: "biscuits",
-    category: "various",
+    category: "divers",
   },
   {
     label: "chocolat",
-    category: "various",
+    category: "divers",
   },
   {
     label: "lessive",
@@ -89,6 +89,6 @@ export const datalistProductItems = [
   },
   {
     label: "liquide vaisselle",
-    category: "grocery",
+    category: "épicerie",
   },
 ];

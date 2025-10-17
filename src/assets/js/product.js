@@ -55,6 +55,9 @@ export function displayShoppingList() {
   if (items.length) {
     const ol = document.createElement("ol");
     const p = sectionElt.querySelector("p");
+    if (p) {
+      p.remove(); // delete default content empty basket or last content
+    }
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       const li = document.createElement("li");
@@ -69,10 +72,6 @@ export function displayShoppingList() {
       }
       li.innerHTML = `${input.outerHTML}<label for="product-${i}">${item.label}</label>`;
       ol.append(li);
-    }
-    if (p) {
-      // delete default content empty basket
-      p.remove();
     }
     sectionElt.append(ol);
     updateProductStatus();
@@ -103,13 +102,13 @@ export function addProduct() {
         )
       ) {
         // Duplicate product
-        alertUser.innerText = `${newProduct.label} est déjà présent dans votre liste en cours !`;
+        alertUser.innerText = `${newProduct.label} est déjà présent dans votre liste de courses !`;
       } else {
-        // New product inside products list
+        // New product
         products.push(newProduct);
         sessionStorage.setItem("products", JSON.stringify(products));
       }
-      productName.value = ""; // Remove current value after submitted
+      productName.value = ""; // Remove current product name after submitted
       const ol = document.querySelector("#section-shoplist ol");
       if (ol) {
         ol.remove(); // Remove last list
@@ -129,6 +128,9 @@ export function toogleForm() {
   btnPlus.addEventListener("click", function () {
     const formSectionElt = document.querySelector("#section-add-product");
     formSectionElt.classList.toggle("hidden");
+    this.querySelectorAll("svg").forEach(function (svg) {
+      svg.classList.toggle("hidden");
+    });
   });
 }
 
