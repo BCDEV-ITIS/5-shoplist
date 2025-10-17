@@ -67,6 +67,9 @@ section {
   display: none;
 }
 
+#section-add-product {
+  margin-bottom: 5.5rem;
+}
 
 #btn-add-product {
   cursor: pointer;
