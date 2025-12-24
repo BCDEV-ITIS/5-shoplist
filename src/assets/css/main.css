@@ -15,13 +15,13 @@ main {
   width: 100%;
 }
 
-body>footer {
+body > footer {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   margin-top: 2rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 img#logo {
@@ -38,7 +38,7 @@ img#logo + span {
 
 h1 {
   font-size: 1.4rem;
-   text-decoration: underline;
+  text-decoration: underline;
 }
 
 h2 {
@@ -101,7 +101,7 @@ input[type="text"] {
   border-radius: 0.5rem;
 }
 
-input[type="checkbox"]+label {
+input[type="checkbox"] + label {
   text-transform: capitalize;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -114,8 +114,8 @@ input[type="checkbox"]:checked + label {
 }
 
 li {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #alert-user {
