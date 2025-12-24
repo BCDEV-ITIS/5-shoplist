@@ -1,10 +1,10 @@
 import { datalistProductItems } from "./data/datalist-products.js";
 /**
- * Get products from Brownser API sessionStorage
+ * Get products from Brownser API localStorage
  * @returns Array of product with label and checked attributes or empty array
  */
-function getProductsFromSessionStorage() {
-  const productsFromLS = sessionStorage.getItem("products");
+function getProductsFromStorage() {
+  const productsFromLS = localStorage.getItem("products");
   if (productsFromLS) return JSON.parse(productsFromLS);
   else return [];
 }
@@ -14,7 +14,7 @@ function getProductsFromSessionStorage() {
  * @returns void
  */
 export function displayTotalPurchased() {
-  const total = getProductsFromSessionStorage().length;
+  const total = getProductsFromStorage().length;
   const purchased = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   ).length;
@@ -31,14 +31,14 @@ function updateProductStatus() {
   if (checkboxes.length) {
     checkboxes.forEach(function (c) {
       c.addEventListener("change", function () {
-        let products = getProductsFromSessionStorage();
+        let products = getProductsFromStorage();
         let findProductIndex = products.findIndex(
           (i) => i.label.toLowerCase() === c.value.toLowerCase()
         );
         const current = products[findProductIndex];
         current.checked = !current.checked;
         products[findProductIndex] = current;
-        sessionStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(products));
         displayTotalPurchased();
       });
     });
@@ -51,7 +51,7 @@ function updateProductStatus() {
  */
 export function displayShoppingList() {
   const sectionElt = document.querySelector("#section-shoplist");
-  const items = getProductsFromSessionStorage();
+  const items = getProductsFromStorage();
   if (items.length) {
     const ol = document.createElement("ol");
     const p = sectionElt.querySelector("p");
@@ -89,7 +89,7 @@ export function addProduct() {
       e.preventDefault();
       const alertUser = document.querySelector("#alert-user");
       alertUser.innerHTML = ""; // remove last message
-      const products = getProductsFromSessionStorage();
+      const products = getProductsFromStorage();
       const productName = document.querySelector("#product-name");
       if (productName.value === "") {
         alertUser.innerHTML = "Le nom du produit est obligatoire !";
@@ -106,7 +106,7 @@ export function addProduct() {
       } else {
         // New product
         products.push(newProduct);
-        sessionStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(products));
       }
       productName.value = ""; // Remove current product name after submitted
       const ol = document.querySelector("#section-shoplist ol");
