@@ -122,3 +122,11 @@ li {
   color: #b8860b;
   font-weight: 500;
 }
+
+button#delete-all {
+  float: right;
+  margin-right: 1.5rem;
+}
+section, #alert-user{
+  clear: both;
+}
