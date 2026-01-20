@@ -3,7 +3,8 @@ import {
   addProduct,
   toogleForm,
   displayShoppingList,
-  displayTotalPurchased
+  displayTotalPurchased,
+  deleteProductsFromStorage
 } from './product.js'
 
 fillDataListProducts()
@@ -11,3 +12,4 @@ addProduct()
 toogleForm()
 displayShoppingList()
 displayTotalPurchased()
+deleteProductsFromStorage()

@@ -148,3 +148,13 @@ export function fillDataListProducts() {
     datalistProductElt.append(opt);
   }
 }
+
+export function deleteProductsFromStorage() {
+  const btn = document.querySelector('button#delete-all')
+  if(btn) {
+    btn.addEventListener('click', () => {
+      localStorage.clear()
+      location.reload()
+    })
+  }
+}
